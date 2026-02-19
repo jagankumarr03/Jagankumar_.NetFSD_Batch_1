@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Learning Certification Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <header>
+        <h1>NextSkill Certification Program</h1>
+        <nav>
+            <a href="#">Home</a> |
+            <a href="#">Courses</a> |
+            <a href="#">Enroll</a> |
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <article>
+                <h2>Program Introduction</h2>
+
+                <video width="640" height="360" controls poster="course.jpg">
+                    <source src="intro.mp4" type="video/mp4">
+                    <source src="intro.webm" type="video/webm">
+                    <track src="subtitles.vtt" kind="subtitles"
+                           srclang="en"
+                           label="English"
+                           default>
+                    Your browser does not support the video tag.
+                </video>
+
+                <p>Please watch the introduction video before enrolling.</p>
+            </article>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Course Registration</h2>
+
+            <form>
+
+                <label>Full Name:</label><br>
+                <input type="text" required autofocus><br><br>
+
+                <label>Select Course:</label><br>
+                <input type="text" list="courses"
+                       placeholder="Start typing..."
+                       required>
+
+                <datalist id="courses">
+                    <option value="Full Stack Web Development">
+                    <option value="Data Science & AI">
+                    <option value="Machine Learning">
+                    <option value="Cloud Computing">
+                    <option value="Cybersecurity">
+                    <option value="DevOps Engineering">
+                </datalist><br><br>
+
+                <label>Select Batch Month:</label><br>
+                <input type="month" required><br><br>
+
+                <label>Preferred Session Time:</label><br>
+                <input type="time" required><br><br>
+
+                <label>Rate Your Skill Level (1-10):</label><br>
+                <input type="range" min="1" max="10" step="1"><br><br>
+
+                <label>Enrollment Completion:</label><br>
+                <progress value="70" max="100"></progress>
+                <p>70% Complete</p>
+
+                <br>
+
+                <input type="submit" value="Enroll Now">
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NextSkill Certification Program</p>
+        <p>Contact: support@nextskill.com | +91 9876543210</p>
+    </footer>
+
+</body>
+</html>
