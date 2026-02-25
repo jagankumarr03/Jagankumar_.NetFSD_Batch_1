@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Design Practice</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            font-size: 18px;
+        }
+
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+
+            body {
+                background-color: #f0f8ff; /* Change background on mobile */
+                font-size: 14px; /* Smaller font */
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="content">
+        <h1>Responsive Webpage</h1>
+        <p>
+            This page changes layout and styling based on screen size.
+            Resize your browser or use responsive mode to test it.
+        </p>
+    </div>
+
+</body>
+</html>
