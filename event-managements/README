@@ -1,0 +1,21 @@
+# EventSphere - Event Management System
+
+Technologies:
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- JSON Server
+
+Features:
+- Admin can add and delete events
+- Users can view events
+- Users can register for events
+- Seat availability automatically updates
+
+How to Run:
+
+1. Install json-server
+2. Run:
+json-server --watch db.json --port 3000
+3. Open index.html

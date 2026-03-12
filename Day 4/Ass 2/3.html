@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+</head>
+<body>
+
+    <h2>Counter Application</h2>
+
+    <p id="counter">0</p>
+
+    <button id="incrementBtn">Increment</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+
+        var counterValue = 0;
+
+        function updateDisplay() {
+            document.getElementById("counter").innerText = counterValue;
+        }
+
+        function incrementCounter(step) {
+            counterValue = counterValue + step;
+            updateDisplay();
+        }
+
+        function resetCounter() {
+            counterValue = 0;
+            updateDisplay();
+        }
+
+        document.getElementById("incrementBtn").addEventListener("click", function () {
+            incrementCounter(1);   // Passing step value
+        });
+
+        document.getElementById("resetBtn").addEventListener("click", function () {
+            resetCounter();
+        });
+
+    </script>
+
+</body>
+</html>

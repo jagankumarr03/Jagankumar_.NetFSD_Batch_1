@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "id": "229d",
+      "title": "birthday",
+      "description": "birthday party of jagan ",
+      "date": "2026-03-19",
+      "location": "Delhi",
+      "capacity": 30,
+      "availableSeats": 30
+    },
+    {
+      "id": "1112",
+      "title": "COOKING COMPETITION ",
+      "description": "no gas cooking competition for the children ",
+      "date": "2026-03-30",
+      "location": "Hyderabad",
+      "capacity": 20,
+      "availableSeats": 19
+    }
+  ],
+  "registrations": [
+    {
+      "id": "0f34",
+      "eventId": null,
+      "participantName": "sdc",
+      "email": "jagankumar@gmail.com",
+      "phone": "9729512345"
+    },
+    {
+      "id": "42cc",
+      "eventId": null,
+      "participantName": "jlh",
+      "email": "adf@asdf",
+      "phone": "9825412345"
+    },
+    {
+      "id": "50ce",
+      "eventId": null,
+      "participantName": "faga",
+      "email": "arnold@gmail.co",
+      "phone": "9722951234"
+    },
+    {
+      "id": "6025",
+      "eventId": null,
+      "participantName": "asdf",
+      "email": "asdf2@gmail.com",
+      "phone": "9729512343"
+    },
+    {
+      "id": "398f",
+      "eventId": null,
+      "participantName": "asdfasdf",
+      "email": "abcd@gmail.com",
+      "phone": "1234567888"
+    },
+    {
+      "id": "9183",
+      "eventId": 1112,
+      "participantName": "sadana",
+      "email": "arnold@gmail.com",
+      "phone": "9729512345"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

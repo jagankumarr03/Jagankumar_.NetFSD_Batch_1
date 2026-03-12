@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Register for events on EventSphere platform">
+<meta name="keywords" content="events, registration, workshops, conferences">
+<meta name="author" content="EventSphere">
+
+<title>Register Event | EventSphere</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-dark bg-dark">
+<div class="container">
+<a class="navbar-brand" href="index.html">EventSphere</a>
+<a href="index.html" class="btn btn-light">Back</a>
+</div>
+</nav>
+
+
+<div class="container mt-4 text-center">
+<h2>Event Registration</h2>
+</div>
+
+
+<div class="container mt-4">
+<div class="card shadow">
+<div class="card-body">
+
+<h4 id="eventTitle"></h4>
+
+<p><strong>Date:</strong> <span id="eventDate"></span></p>
+<p><strong>Location:</strong> <span id="eventLocation"></span></p>
+<p><strong>Seats Available:</strong> <span id="eventSeats"></span></p>
+
+</div>
+</div>
+</div>
+
+
+<div class="container mt-4">
+<div class="card shadow">
+<div class="card-body">
+
+<h4>Register</h4>
+
+<form id="registerForm">
+
+<div class="mb-3">
+<label class="form-label">Name</label>
+<input type="text" id="name" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" id="email" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Phone</label>
+<input type="tel" id="phone" class="form-control" placeholder="10 digit number" required>
+</div>
+
+<button class="btn btn-primary">Register</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+<script>
+
+const EVENT_API = "http://localhost:3000/events";
+const REG_API = "http://localhost:3000/registrations";
+
+
+const params = new URLSearchParams(window.location.search);
+const eventId = params.get("eventId");
+
+let currentEvent;
+
+
+
+async function loadEvent(){
+
+try{
+
+const response = await fetch(EVENT_API + "/" + eventId);
+
+const event = await response.json();
+
+currentEvent = event;
+
+document.getElementById("eventTitle").innerText = event.title;
+document.getElementById("eventDate").innerText = event.date;
+document.getElementById("eventLocation").innerText = event.location;
+document.getElementById("eventSeats").innerText =
+event.availableSeats + " / " + event.capacity;
+
+}
+catch(error){
+
+console.error("Error loading event:", error);
+
+}
+
+}
+
+
+
+document.getElementById("registerForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+const phone = document.getElementById("phone").value.trim();
+
+
+
+
+if(name.length < 3){
+
+alert("Name must be at least 3 characters");
+
+return;
+
+}
+
+
+
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailPattern.test(email)){
+
+alert("Enter a valid email address");
+
+return;
+
+}
+
+
+
+
+if(!/^[0-9]{10}$/.test(phone)){
+
+alert("Phone number must be exactly 10 digits");
+
+return;
+
+}
+
+
+
+
+if(currentEvent.availableSeats <= 0){
+
+alert("No seats available for this event");
+
+return;
+
+}
+
+
+
+const registration = {
+
+eventId: Number(eventId),
+participantName: name,
+email: email,
+phone: phone
+
+};
+
+
+
+
+await fetch(REG_API,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify(registration)
+
+});
+
+
+
+
+const updatedSeats = currentEvent.availableSeats - 1;
+
+await fetch(EVENT_API + "/" + eventId,{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+
+...currentEvent,
+availableSeats: updatedSeats
+
+})
+
+});
+
+
+
+alert("Registration Successful!");
+
+window.location.href = "index.html";
+
+});
+
+
+
+loadEvent();
+
+</script>
+
+</body>
+
+</html>
